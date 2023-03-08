@@ -5,6 +5,7 @@ import com.alunoonline.v1.matricula_aluno.dtos.HistoricoAlunoDto;
 import com.alunoonline.v1.matricula_aluno.models.MatriculaAluno;
 import com.alunoonline.v1.matricula_aluno.dtos.MatriculaAlunoNotasOnlyDto;
 import com.alunoonline.v1.matricula_aluno.repositories.MatriculaAlunoRepository;
+import com.alunoonline.v1.secretaria.models.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class MatriculaAlunoService {
         return repository.save(matriculaAluno);
     }
 
-    public void updateGrades(MatriculaAlunoNotasOnlyDto notasOnlyDto, Long matriculaAlunoId) {
+    public void updateNotas(MatriculaAlunoNotasOnlyDto notasOnlyDto, Long matriculaAlunoId) {
         Optional<MatriculaAluno> matriculaAlunoToUpdate = repository.findById(matriculaAlunoId);
 
         boolean needUpdate = false;
@@ -58,7 +59,7 @@ public class MatriculaAlunoService {
 
     }
 
-    public void updateStatusToBreak(Long matriculaAlunoId) throws Exception {
+    public void trancarMatricula(Long matriculaAlunoId) throws Exception {
         Optional<MatriculaAluno> matriculaAlunoToUpdate = repository.findById(matriculaAlunoId);
 
         if (matriculaAlunoToUpdate.isPresent()) {
@@ -80,7 +81,7 @@ public class MatriculaAlunoService {
             HistoricoAlunoDto historico = new HistoricoAlunoDto();
 
             historico.setNomeAluno(matriculasDoAluno.get(0).getAluno().getNome());
-            historico.setCursoAluno(matriculasDoAluno.get(0).getAluno().getCurso());
+            historico.setCursosAluno(matriculasDoAluno.get(0).getAluno().getCursos());
             List<DisciplinasAlunoDto> disciplinasList = new ArrayList<>();
 
             for (MatriculaAluno matricula: matriculasDoAluno) {
@@ -108,6 +109,14 @@ public class MatriculaAlunoService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Esse aluno não possui matrículas.");
     }
 
+    public Double retonaMediaAluno() {
 
+        return repository.retornaMedia();
+    }
+
+    public List<Aluno> retonaAlunosStatus(String status) {
+
+        return repository.retornaAlunos(status);
+    }
 
 }

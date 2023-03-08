@@ -1,7 +1,9 @@
 package com.alunoonline.v1.secretaria.controllers;
 
 import com.alunoonline.v1.secretaria.models.Aluno;
+import com.alunoonline.v1.secretaria.models.Curso;
 import com.alunoonline.v1.secretaria.services.AlunoService;
+import com.alunoonline.v1.secretaria.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,37 +13,29 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/alunos")
-public class AlunoController {
+@RequestMapping("/curso")
+public class CursoController {
 
     @Autowired
-    AlunoService service;
+    CursoService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Aluno> create(@RequestBody Aluno aluno) {
-        Aluno alunoCreated = service.create(aluno);
+    public ResponseEntity<Curso> create(@RequestBody Curso curso) {
+        Curso cursoCreated = service.create(curso);
 
-        return ResponseEntity.status(201).body(alunoCreated);
-    }
-
-    @PutMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Aluno> update(@RequestBody Aluno aluno) {
-        Aluno alunoCreated = service.create(aluno);
-
-        return ResponseEntity.status(201).body(alunoCreated);
+        return ResponseEntity.status(201).body(cursoCreated);
     }
 
     @GetMapping("/listar-todos")
     @ResponseStatus(HttpStatus.OK)
-    public List<Aluno> findAll() {
+    public List<Curso> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Aluno> findById(@PathVariable Long id) {
+    public Optional<Curso> findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
