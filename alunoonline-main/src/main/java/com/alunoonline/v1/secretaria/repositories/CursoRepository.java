@@ -11,10 +11,4 @@ import java.util.List;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
-
-    @Query(value = "select a from Curso c inner join Aluno a on c.id = a.id " +
-            "where c.id =:id")
-    List<Aluno> consultarListaAlunoJpql(@Param("id")Long id);
-
-
 }

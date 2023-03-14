@@ -34,4 +34,9 @@ public class Aluno implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_curso"))
     private Set<Curso> cursos = new HashSet<>();
 
+    public Aluno(Long id, String nome, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+    }
 }

@@ -16,6 +16,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@SqlResultSetMapping(
+        name="AlunosCursosMapping",
+        classes={
+                @ConstructorResult(
+                        targetClass=Aluno.class,
+                        columns={
+                                @ColumnResult(name="id", type=Long.class),
+                                @ColumnResult(name="nome"),
+                                @ColumnResult(name="email")})})
 public class Curso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

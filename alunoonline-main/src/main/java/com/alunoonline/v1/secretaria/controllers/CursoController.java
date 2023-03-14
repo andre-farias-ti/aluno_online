@@ -44,10 +44,10 @@ public class CursoController {
         service.delete(id);
     }
 
-    @DeleteMapping(value = "consulta-lista-aluno/{id}")
+    @PostMapping(value = "consulta-lista-aluno/{id}")
     public List<Aluno> cusultaListaAlunos(@PathVariable Long id) {
 
-        return service.buscarListaAluno(id);
+        return service.buscarListaAlunos(id);
     }
 
 }

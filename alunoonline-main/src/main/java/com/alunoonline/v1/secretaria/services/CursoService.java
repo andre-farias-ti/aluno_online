@@ -6,6 +6,9 @@ import com.alunoonline.v1.secretaria.repositories.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +17,9 @@ public class CursoService {
 
     @Autowired
     CursoRepository repository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public Curso create(Curso curso) {
         return repository.save(curso);
@@ -31,8 +37,13 @@ public class CursoService {
         repository.deleteById(id);
     }
 
-    public List<Aluno> buscarListaAluno(Long id){
-        return repository.consultarListaAlunoJpql(id);
+    public List<Aluno> buscarListaAlunos(Long id){
+        Query query = entityManager.createNativeQuery("select a.* from aluno_online.curso c" +
+                "  inner join aluno_online.aluno_curso ac on c.id = ac.id_curso" +
+                "  inner join  aluno_online.aluno a on ac.id_aluno = a.id" +
+                "  where c.id = " + id, "AlunosCursosMapping");
+        List<Aluno> pessoas = query.getResultList();
+        return pessoas;
     }
     
 }
