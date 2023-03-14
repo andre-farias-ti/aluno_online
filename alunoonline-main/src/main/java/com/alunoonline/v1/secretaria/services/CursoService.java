@@ -1,5 +1,6 @@
 package com.alunoonline.v1.secretaria.services;
 
+import com.alunoonline.v1.secretaria.models.Aluno;
 import com.alunoonline.v1.secretaria.models.Curso;
 import com.alunoonline.v1.secretaria.repositories.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class CursoService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<Aluno> buscarListaAluno(Long id){
+        return repository.consultarListaAlunoJpql(id);
     }
     
 }

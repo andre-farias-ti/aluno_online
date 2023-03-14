@@ -2,7 +2,6 @@ package com.alunoonline.v1.secretaria.controllers;
 
 import com.alunoonline.v1.secretaria.models.Aluno;
 import com.alunoonline.v1.secretaria.models.Curso;
-import com.alunoonline.v1.secretaria.services.AlunoService;
 import com.alunoonline.v1.secretaria.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,6 +42,12 @@ public class CursoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @DeleteMapping(value = "consulta-lista-aluno/{id}")
+    public List<Aluno> cusultaListaAlunos(@PathVariable Long id) {
+
+        return service.buscarListaAluno(id);
     }
 
 }
