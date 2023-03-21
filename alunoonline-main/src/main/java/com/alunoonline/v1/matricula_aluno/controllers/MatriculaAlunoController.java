@@ -30,8 +30,7 @@ public class MatriculaAlunoController {
 
     @PatchMapping("/update-notas/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void patchGrades(@RequestBody MatriculaAlunoNotasOnlyDto notasOnlyDto,
-                                                @PathVariable Long id) {
+    public void patchGrades(@RequestBody MatriculaAlunoNotasOnlyDto notasOnlyDto, @PathVariable Long id) {
          service.updateNotas(notasOnlyDto, id);
     }
 
