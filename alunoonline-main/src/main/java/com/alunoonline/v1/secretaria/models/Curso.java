@@ -23,8 +23,7 @@ import java.util.Set;
                         targetClass=Aluno.class,
                         columns={
                                 @ColumnResult(name="id", type=Long.class),
-                                @ColumnResult(name="nome"),
-                                @ColumnResult(name="email")})})
+                                @ColumnResult(name="nome")})})
 public class Curso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

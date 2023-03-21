@@ -25,7 +25,8 @@ public class Aluno implements Serializable {
 
     private String nome;
 
-    private String email;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Email> emails;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
@@ -34,9 +35,8 @@ public class Aluno implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_curso"))
     private Set<Curso> cursos = new HashSet<>();
 
-    public Aluno(Long id, String nome, String email) {
+    public Aluno(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.email = email;
     }
 }
