@@ -44,7 +44,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    //@PreAuthorize("hasAnyRole('ROLE_USER')")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Aluno> findById(@PathVariable Long id) {
         return service.findById(id);

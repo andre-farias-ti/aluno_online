@@ -1,6 +1,8 @@
-package com.alunoonline.v1.authentication;
+package com.alunoonline.v1.authentication.service;
 
-import com.alunoonline.v1.enuns.RoleName;
+import com.alunoonline.v1.authentication.repository.RoleModelRepository;
+import com.alunoonline.v1.authentication.repository.UserRepository;
+import com.alunoonline.v1.authentication.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,12 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -48,4 +44,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return user;
     }
+
 }

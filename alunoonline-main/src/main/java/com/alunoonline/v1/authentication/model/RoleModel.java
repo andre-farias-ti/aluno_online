@@ -1,4 +1,4 @@
-package com.alunoonline.v1.authentication;
+package com.alunoonline.v1.authentication.model;
 
 import com.alunoonline.v1.enuns.RoleName;
 import org.springframework.security.core.GrantedAuthority;

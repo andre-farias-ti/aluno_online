@@ -1,5 +1,6 @@
-package com.alunoonline.v1.authentication;
+package com.alunoonline.v1.authentication.model;
 
+import com.alunoonline.v1.authentication.model.RoleModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -7,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name="user_model")
