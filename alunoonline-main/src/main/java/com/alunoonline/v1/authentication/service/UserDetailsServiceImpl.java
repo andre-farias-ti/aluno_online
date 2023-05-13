@@ -23,12 +23,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserModel userModel = userRepository.findByUserName(username)
-                .orElseThrow(()-> new UsernameNotFoundException("Não foi encontrado o usúario:" + username));
+//                return new User(userModel.getUserName(),
+//                userModel.getPassword(), true, true,
+//                true, true,userModel.getAuthorities());
 
-        return new User(userModel.getUserName(),
-                userModel.getPassword(), true, true,
-                true, true,userModel.getAuthorities());
+        return userRepository.findByUserName(username)
+                .orElseThrow(()-> new UsernameNotFoundException("Não foi encontrado o usúario:" + username));
     }
 
     @Transactional

@@ -2,6 +2,6 @@ package com.alunoonline.v1.enuns;
 
 public enum RoleName {
 
-    ADMIN,
-    USER
+    ROLE_ADMIN,
+    ROLE_USER
 }

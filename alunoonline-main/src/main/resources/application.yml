@@ -1,3 +1,8 @@
+security:
+  jwt:
+    token:
+      secret-key: 54cr37
+      expire-length: 3600000
 spring:
   flyway:
     baselineOnMigrate: true
@@ -13,6 +18,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect    
       show-sql: false
+springdoc:
+  pathsToMatch:
+    - /auth/**
+  swagger-ui:
+    use-root-path: true
+
+#server:
+ # servlet:
+ #   contextPath: /alunoOnline
 
             
       
