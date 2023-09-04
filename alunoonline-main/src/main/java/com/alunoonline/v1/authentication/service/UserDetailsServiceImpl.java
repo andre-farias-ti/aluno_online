@@ -1,10 +1,9 @@
 package com.alunoonline.v1.authentication.service;
 
+import com.alunoonline.v1.authentication.model.UserModel;
 import com.alunoonline.v1.authentication.repository.RoleModelRepository;
 import com.alunoonline.v1.authentication.repository.UserRepository;
-import com.alunoonline.v1.authentication.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
